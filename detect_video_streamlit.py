@@ -4,6 +4,7 @@ YOLO (Standard / YOLO‑World) 物件偵測 + 追蹤 — Streamlit App
 ==========================================================
 此版本基於使用者提供的可運作版本 (merged_yolo_app_v4_fixed_syntax) 進行調整，
 確保使用 st.spinner() 並在 spinner 區塊外呼叫 st.rerun()。
+此版本調整了影片預覽大小並擴充了 Standard YOLO 的預設偵測類別。
 """
 
 # -----------------------------------------------------------------------------
@@ -42,15 +43,22 @@ MODEL_TYPES = ["Standard YOLO", "YOLO-World"]
 
 STANDARD_MODEL_CONFIG = {
     "model_path": "yolov8n.pt",
-    "target_classes_ids": [0, 2],            # 0: person, 2: car
-    "target_classes_names": {0: "Person", 2: "Car"},
+    "target_classes_ids": [0, 1, 2, 3, 5, 7], # 0:person, 1:bicycle, 2:car, 3:motorcycle, 5:bus, 7:truck
+    "target_classes_names": {
+        0: "Person", 
+        1: "Bicycle", 
+        2: "Car", 
+        3: "Motorcycle", 
+        5: "Bus", 
+        7: "Truck"
+    },
     "confidence_threshold": 0.3,
-    "display_name": "YOLOv8n (Person, Car)"
+    "display_name": "YOLOv8n (人車相關)"
 }
 
 WORLD_MODEL_CONFIG = {
     "model_path": "yolov8s-worldv2.pt",
-    "default_prompt": "person, car, bicycle",
+    "default_prompt": "person, car, bicycle, traffic light, backpack", # 擴充預設提示詞
     "confidence_threshold": 0.1,
     "display_name": "YOLOv8s-World v2"
 }
@@ -479,8 +487,11 @@ elif not ss.video_path:
         - **YOLO-World**: 輸入您想偵測的任意物件名稱 (例如: `a red apple, a blue car`)。
     """)
 else: # video_path 存在，顯示影片預覽
-    st.subheader("🎞️ 影片預覽")
-    st.video(ss.video_path)
+    # 使用 st.columns 來限制影片播放器的寬度
+    video_col, empty_col = st.columns([2, 1]) # 影片佔 2/3，右側留空 1/3
+    with video_col:
+        st.subheader("🎞️ 影片預覽")
+        st.video(ss.video_path)
     
     # main_area_progress_bar_placeholder 已在主流程頂部定義
     # 如果影片已上傳但未處理，提示使用者
@@ -491,9 +502,9 @@ else: # video_path 存在，顯示影片預覽
             f"提示詞: {ss.current_prompt_world if is_currently_world_model else 'Standard Predefined'}, " # is_currently_world_model 來自 sidebar 範圍
             f"信賴度: {ss.confidence_threshold:.2f}"
         )
-        _settings_changed_for_main = (ss.video_processed and # 這裡應該是 !ss.video_processed 或者 settings_changed
-                                     ss.last_processed_settings != _current_settings_summary_for_main and
-                                     ss.video_path)
+        # _settings_changed_for_main = (ss.video_processed and # 這裡應該是 !ss.video_processed 或者 settings_changed
+        #                              ss.last_processed_settings != _current_settings_summary_for_main and
+        #                              ss.video_path)
         
         # 修正: settings_changed 應該是針對"已處理過但設定改變"的情況
         # 如果尚未處理，則顯示"開始處理"
