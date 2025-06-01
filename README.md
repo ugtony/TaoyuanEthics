@@ -1,18 +1,23 @@
 # Taoyuan Ethics
 
-![alt text](image.png)
-![alt text](image-1.png)
-![alt text](image-2.png)
+![alt text](image-3.png)
+![alt text](image-4.png)
 
-This repository contains three programs:
+## Installization
+1. Install python 
+- https://www.python.org/downloads/
+2. Install packages
+- download [this repository](https://github.com/ugtony/TaoyuanEthics)
+- open terminal in project folder "TaoyuanEthics" and execute
+   `pip install -r requirements.txt`
+
+This repository contains two programs:
 
 1. **`detect_video.ipynb`**  
-    This program is designed to be executed as a Jupyter Notebook.
+    A Jupyter Notebook demo.
 
 2. **`detect_video_sreamlit.py`**  
-RUN `pip3 install streamlit openai-clip` before using this demo.
-This is a Python script that is expected to be executed as a Streamlit program using the command `streamlit run detect_video_streamlit.py`.  
-It is designed to detect people or vehicles, similar to the first program, but implemented in a Streamlit interface.
-It also utilizes the YOLO-World model to detect objects specified by the user.
+    A streamlit website demo. 
+    `streamlit run detect_video_streamlit.py`.  
 
 We would like to express our sincere appreciation to [Pexels](https://www.pexels.com/) for the high-quality video footage that enhances this project.
