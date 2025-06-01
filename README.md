@@ -8,6 +8,7 @@
 - open terminal in project folder "TaoyuanEthics" by `cmd`, and then execute
    `pip install -r requirements.txt`
 
+## Run Program
 This repository contains two programs:
 
 1. **`detect_video_sreamlit.py`**  
