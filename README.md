@@ -13,7 +13,8 @@ This repository contains two programs:
 
 1. **`detect_video_sreamlit.py`**  
     A streamlit website demo. 
-    `streamlit run detect_video_streamlit.py`.  
+    `streamlit run detect_video_streamlit.py --server.maxUploadSize 2048`.  
+    set server.maxUploadSize to 2048 to increase upload size limit to 2GB
 
 
 2. **`detect_video.ipynb`**      
