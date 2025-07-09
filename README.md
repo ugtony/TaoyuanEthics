@@ -9,7 +9,7 @@
    `pip install -r requirements.txt`
 
 ## Run Program
-This repository contains two programs:
+This repository contains three programs:
 
 1. **`detect_video_sreamlit.py`**  
     A streamlit website demo. 
@@ -17,9 +17,12 @@ This repository contains two programs:
     set server.maxUploadSize to 2048 to increase upload size limit to 2GB
 
 
-2. **`detect_video.ipynb`**      
+2. **`detect_video.ipynb`**  
     A Jupyter Notebook demo.
     Open Jupyter Lab interface by `jupyter lab`, and open detect_video.ipynb in browser.
 
+3. **`run_app.py/app.py`**  
+    ready to be packaged by pyinstaller.
+    `pyinstaller run_app.spec`
 
 We would like to express our sincere appreciation to [Pexels](https://www.pexels.com/) for the high-quality video footage that enhances this project.
