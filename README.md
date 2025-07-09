@@ -26,3 +26,9 @@ This repository contains three programs:
     `pyinstaller run_app.spec`
 
 We would like to express our sincere appreciation to [Pexels](https://www.pexels.com/) for the high-quality video footage that enhances this project.
+
+
+
+![alt text](image-1.png)
+![alt text](image-2.png)
+![alt text](image-3.png)
